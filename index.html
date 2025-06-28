@@ -57,9 +57,11 @@ function scatter(id,xAcc,yAcc,hl,dset=data){
 function chart1(){scatter('#chart1',d=>d.pages,d=>d.rating);}
 function chart2(){scatter('#chart2',d=>d.title.length,d=>d.rating);}
 function chart3(dset=data){
- const totals=data.map(d=>d.total).sort((a,b)=>a-b);
- const thresh=totals[Math.floor(totals.length*0.25)];
- gemData=data.filter(d=>d.rating>=4.4&&d.total<=thresh);
+ const sorted=[...data].sort((a,b)=>{
+   if(b.rating===a.rating) return a.total-b.total;
+   return b.rating-a.rating;
+ });
+ gemData=sorted.slice(0,5);
  scatter('#chart3',d=>Math.log10(d.total+1),d=>d.rating,d=>gemData.includes(d),dset);
 }
 document.getElementById('gemToggle').addEventListener('change',e=>{
