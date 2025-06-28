@@ -25,6 +25,7 @@
  <h2 class='sticky'>Hidden gems</h2>
  <label class='toggle'><input type='checkbox' id='gemToggle'> Show hidden gems only</label>
  <svg id='chart3' aria-label='Scatter plot highlighting high rated but little known books'></svg>
+  <div class="step">Here are five acclaimed sleepers worth seeking out: All City Writers: The Graffiti Diaspora, Field Guide to the Rare Plants of Washington, Parade of popular hits, Deceptions of the Ages: "Mormons" Freemasons and Extraterrestrials, and The New Testament with the Joseph Smith Translation—each praised with ratings above 4.8 despite fewer than two dozen reviews.</div>
 </section>
 <footer>
  <p class='methods'>Data source: Kaggle. We removed incomplete entries, trimmed extremes with a 1.5×IQR rule and randomly sampled 10 000 books.</p>
@@ -49,7 +50,7 @@ function scatter(id,xAcc,yAcc,hl,dset=data){
  svg.append('g').selectAll('circle').data(dset).enter().append('circle')
   .attr('class',d=>hl&&hl(d)?'dot gem':'dot')
   .attr('cx',d=>x(xAcc(d))).attr('cy',d=>y(yAcc(d))).attr('r',3)
-  .on('mousemove',(event,d)=>{tooltip.style.display='block';tooltip.style.left=(event.pageX+10)+'px';tooltip.style.top=(event.pageY-20)+'px';tooltip.textContent=`${d.title} (${d.rating.toFixed(2)})`;})
+  .on('mousemove',(event,d)=>{tooltip.style.display='block';tooltip.style.left=(event.pageX+10)+'px';tooltip.style.top=(event.pageY-20)+'px';tooltip.textContent=`${d.title} — rating ${d.rating.toFixed(2)}`;})
   .on('mouseout',()=>tooltip.style.display='none');
 }
 function chart1(){scatter('#chart1',d=>d.pages,d=>d.rating);}
