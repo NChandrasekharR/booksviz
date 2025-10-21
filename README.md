@@ -1,7 +1,7 @@
 # Goodreads Reading Habits Story
 
 ## Live experience
-- **Interactive story**: [https://nchandrasekharr.github.io/booksviz/]
+- **Interactive story**: [Link to experience](https://nchandrasekharr.github.io/booksviz/)
 - **Primary entry point**: [`index.html`](index.html) — a single, self-contained scrollytelling page (inline CSS & JS) ready for GitHub Pages.
 
 ## Project background
